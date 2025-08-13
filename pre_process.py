@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from datetime import timedelta
+from statsmodels.tsa.stattools import acf
+from math import floor
 
 '''
 Given the data, read in as a dataframe, we'd like to isolate the acceleration columns and
@@ -27,3 +29,9 @@ def pull_acceleration(dataframe):
     df_accel.set_index('time', inplace=True)
 
     return df_accel
+
+def find_period_acf(series, lags):
+    autocorr = np.array(acf(series, nlags = lags))
+    initial_value = floor(lags * 0.25)
+    first_max = np.argmax(autocorr[initial_value:-1])
+    return initial_value + first_max
