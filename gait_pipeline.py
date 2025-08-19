@@ -12,7 +12,7 @@ from sklearn.decomposition import PCA
 from pre_process import conv_acceleration, find_period_acf
 from find_walking_frames import find_walking_data
 
-def topological_transform(signals, subject_num):
+def topological_transform(signals):
     embedding_dimension = 10
     embedding_time_delay = 5
     stride = 1
@@ -41,7 +41,7 @@ def topological_transform(signals, subject_num):
 
     H0_H1_entropies = topological_transformer.fit_transform(signals)
     
-    return {subject_num: H0_H1_entropies}
+    return H0_H1_entropies
 
 '''
 function to construct a dataset of walking examples for the 
@@ -53,7 +53,7 @@ def make_dataset(subject, directory, num_periods = 4, sample_size = 50):
     keys = sub_walks.keys()
     
     signals = []
-    while len(signals) < 50:
+    while len(signals) < sample_size:
         sub_choice = random.choice(list(keys))
         
         length = len(sub_walks[sub_choice])
