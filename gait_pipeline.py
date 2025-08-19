@@ -12,7 +12,7 @@ from sklearn.decomposition import PCA
 from pre_process import conv_acceleration, find_period_acf
 from find_walking_frames import find_walking_data
 
-def topological_transform(signals):
+def topological_transform(signals, subject_num):
     embedding_dimension = 10
     embedding_time_delay = 5
     stride = 1
@@ -41,33 +41,41 @@ def topological_transform(signals):
 
     H0_H1_entropies = topological_transformer.fit_transform(signals)
     
-    return H0_H1_entropies
+    return {subject_num: H0_H1_entropies}
 
 '''
 function to construct a dataset of walking examples for the 
 given subject that will then be fed into the pipeline function'''
 
-def make_dataset(subject, directory, num_periods = 4):
+def make_dataset(subject, directory, num_periods = 4, sample_size = 50):
     sub_walks = find_walking_data(subject, directory)
     
     keys = sub_walks.keys()
     
-    sub_choice = random.choice(list(keys))
-    
-    length = len(sub_walks[sub_choice])
-    
-    df = sub_walks[sub_choice][random.randint(0, length-1)]
+    signals = []
+    while len(signals) < 50:
+        sub_choice = random.choice(list(keys))
+        
+        length = len(sub_walks[sub_choice])
+        
+        df = sub_walks[sub_choice][random.randint(0, length-1)]
 
-    df_accel = pd.DataFrame(None)
+        df_accel = pd.DataFrame(None)
 
-    for column in df.columns:
-        if 'acc' in column:
-            df_accel[column] = df[column].apply(conv_acceleration)
-    
-    df_accel_rsz = df_accel['acc_rs_z']
+        for column in df.columns:
+            if 'acc' in column:
+                df_accel[column] = df[column].apply(conv_acceleration)
+        
+        df_accel_rsz = df_accel['acc_rs_z']
 
-    num_rows = df_accel_rsz.shape[0]
-    
-    period = find_period_acf(df, 150)
+        num_rows = df_accel_rsz.shape[0]
+        
+        period = find_period_acf(df_accel_rsz, 150)
 
-    num_strides = len(df)//period + 1
+        num_strides = num_rows//period + 1
+
+        if num_strides > num_periods:
+            wind_start = random.randint(0, num_strides - num_periods)
+            series = np.asarray(df_accel_rsz[wind_start*period: wind_start*period + num_periods*period])
+            signals.append(series)
+    return signals
