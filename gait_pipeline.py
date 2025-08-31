@@ -47,10 +47,13 @@ def topological_transform(signals):
 function to construct a dataset of walking examples for the 
 given subject that will then be fed into the pipeline function'''
 
-def make_dataset(subject, directory, num_periods = 4, sample_size = 50):
+def make_dataset(subject, directory, leg = 'right', location = 'thigh', num_periods = 4, sample_size = 50):
     sub_walks = find_walking_data(subject, directory)
     
     keys = sub_walks.keys()
+
+    sensor_location = {'right': {'foot':'rf', 'shin':'rs', 'thigh':'rt'},
+                       'left' : {'foot':'lf', 'shin':'ls', 'thigh':'lt'}}
     
     signals = []
     while len(signals) < sample_size:
@@ -66,16 +69,20 @@ def make_dataset(subject, directory, num_periods = 4, sample_size = 50):
             if 'acc' in column:
                 df_accel[column] = df[column].apply(conv_acceleration)
         
-        df_accel_rsz = df_accel['acc_rs_z']
-
-        num_rows = df_accel_rsz.shape[0]
+        sensor_placed_where = sensor_location[leg][location]
         
-        period = find_period_acf(df_accel_rsz, 150)
+        df_accel_loc = df_accel[['acc_' + sensor_placed_where + '_x',
+                             'acc_' + sensor_placed_where + '_y',
+                             'acc_' + sensor_placed_where + '_z']]
+
+        num_rows = df_accel_loc.shape[0]
+        
+        period = find_period_acf(df_accel_loc, 150)
 
         num_strides = num_rows//period + 1
 
         if num_strides > num_periods:
             wind_start = random.randint(0, num_strides - num_periods)
-            series = np.asarray(df_accel_rsz[wind_start*period: wind_start*period + num_periods*period])
+            series = np.asarray(df_accel_loc[wind_start*period: wind_start*period + num_periods*period])
             signals.append(series)
     return signals
