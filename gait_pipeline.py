@@ -47,7 +47,7 @@ def topological_transform(signals):
 function to construct a dataset of walking examples for the 
 given subject that will then be fed into the pipeline function'''
 
-def make_dataset(subject, directory, leg = 'right', location = 'thigh', num_periods = 4, sample_size = 50):
+def make_dataset(subject, directory, leg = 'right', location = 'thigh', xyz = 'z', num_periods = 4, sample_size = 50):
     sub_walks = find_walking_data(subject, directory)
     
     keys = sub_walks.keys()
@@ -71,12 +71,10 @@ def make_dataset(subject, directory, leg = 'right', location = 'thigh', num_peri
         
         sensor_placed_where = sensor_location[leg][location]
         
-        df_accel_loc = df_accel[['acc_' + sensor_placed_where + '_x',
-                             'acc_' + sensor_placed_where + '_y',
-                             'acc_' + sensor_placed_where + '_z']]
+        df_accel_loc = df_accel['acc_' + sensor_placed_where + f'_{xyz}']
 
         num_rows = df_accel_loc.shape[0]
-        
+
         period = find_period_acf(df_accel_loc, 150)
 
         num_strides = num_rows//period + 1
