@@ -47,7 +47,7 @@ def topological_transform(signals):
 function to construct a dataset of walking examples for the 
 given subject that will then be fed into the pipeline function'''
 
-def make_dataset(subject, directory, leg = 'right', location = 'thigh', xyz = 'z', num_periods = 4, sample_size = 50):
+def make_sub_dataset(subject, directory, leg = 'right', location = 'thigh', num_periods = 4, sample_size = 50):
     sub_walks = find_walking_data(subject, directory)
     
     keys = sub_walks.keys()
@@ -71,11 +71,11 @@ def make_dataset(subject, directory, leg = 'right', location = 'thigh', xyz = 'z
         
         sensor_placed_where = sensor_location[leg][location]
         
-        df_accel_loc = df_accel['acc_' + sensor_placed_where + f'_{xyz}']
+        df_accel_loc = df_accel[['acc_' + sensor_placed_where + '_x','acc_' + sensor_placed_where + '_y','acc_' + sensor_placed_where + '_z']]
+        _ = df_accel_loc['acc_' + sensor_placed_where + '_z']
+        num_rows = _.shape[0]
 
-        num_rows = df_accel_loc.shape[0]
-
-        period = find_period_acf(df_accel_loc, 150)
+        period = find_period_acf(_, 150)
 
         num_strides = num_rows//period + 1
 
@@ -83,4 +83,4 @@ def make_dataset(subject, directory, leg = 'right', location = 'thigh', xyz = 'z
             wind_start = random.randint(0, num_strides - num_periods)
             series = np.asarray(df_accel_loc[wind_start*period: wind_start*period + num_periods*period])
             signals.append(series)
-    return signals
+    return signals, period
