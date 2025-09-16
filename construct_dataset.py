@@ -1,6 +1,6 @@
 import random
 import pandas as pd
-import numpy as np
+import json
 
 from pre_process import conv_acceleration
 from pre_process import find_period_acf
@@ -50,11 +50,14 @@ def make_sub_dataset(subject, directory, leg = 'right', location = 'thigh', num_
 
         if num_strides > num_periods:
             wind_start = random.randint(0, num_strides - num_periods)
-            series = np.asarray(df_accel_loc[wind_start*period: wind_start*period + num_periods*period])
+            series = df_accel_loc[wind_start*period: wind_start*period + num_periods*period]
             signals.append(series)
     return signals
 
+'''
+Constructs a dataset (if possible) for all subjects. This outputs a dictionary whose indices correspond to the subject number, and whose values are a list of pandas dataframes.
 
+'''
 def construct_dataset(directory = 'data/', leg = 'right', location = 'thigh', num_periods = 4, sample_size=50):
     full_dataset = {}
     
@@ -64,8 +67,31 @@ def construct_dataset(directory = 'data/', leg = 'right', location = 'thigh', nu
             full_dataset[sub_num] = sub_dataset
         except(ValueError):
             continue
-
     return full_dataset
+
+def dataset_to_json(dataset):
+    keys = dataset.keys()
+    dict_dataset = {}
+    for key in keys:            
+        sub_list = []
+        for sample in dataset[key]:
+            sub_list.append(sample.to_dict())
+        dict_dataset[key] = sub_list
+    
+    return json_dataset
+
+
+def write_data_json(filename, data):
+    json_dataset = dataset_to_json(data)
+    with open(filename, 'w') as fp:
+        json.dump(json_dataset, fp, indent=2)
+
+def read_data_json(filename):
+    data = None
+    with open(filename,'r') as dataset:
+        data = json.load(dataset)
+    return data
+
 
 
 if __name__ == '__main__':
