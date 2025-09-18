@@ -78,7 +78,7 @@ def dataset_to_json(dataset):
             sub_list.append(sample.to_dict())
         dict_dataset[key] = sub_list
     
-    return json_dataset
+    return dict_dataset
 
 
 def write_data_json(filename, data):
