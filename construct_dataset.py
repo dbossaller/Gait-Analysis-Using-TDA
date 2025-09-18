@@ -8,7 +8,8 @@ from find_walking_frames import find_walking_data
 
 
 def main():
-    pass
+    make_n_json_datasets(5, leg = 'right', location = 'thigh')
+    make_n_json_datasets(5, leg = 'left', location = 'thigh')
 
 '''
 function to construct a dataset of walking examples for the 
@@ -81,9 +82,9 @@ def dataset_to_json(dataset):
     return dict_dataset
 
 
-def write_data_json(filename, data):
+def write_data_to_json(filename, data):
     json_dataset = dataset_to_json(data)
-    with open(filename, 'w') as fp:
+    with open(filename, 'w+') as fp:
         json.dump(json_dataset, fp, indent=2)
 
 def read_data_json(filename):
@@ -92,7 +93,24 @@ def read_data_json(filename):
         data = json.load(dataset)
     return data
 
+def samples_to_dataframes(dataset):
+    keys  = dataset.keys()
+    df_dataset = {}
+    for key in keys:
+        df_dataset[int(key)] = []
+        for sample_no in range(len(dataset[key])):
+            df_dataset[int(key)].append(pd.DataFrame(dataset[key][sample_no]))
+    return df_dataset
 
+def load_data_from_json(filename):
+    dataset = read_data_json(filename)
+    return samples_to_dataframes(dataset)
+
+def make_n_json_datasets(n, save_folder = '/Datasets', directory = './data/', leg = 'right', location = 'thigh', num_periods = 4, sample_size=50):
+    for i in range(n):
+        filename = f'.{save_folder}/{leg}_{location}_{i}.json'
+        dataset = construct_dataset(directory, leg, location, num_periods, sample_size)
+        write_data_to_json(filename, dataset)
 
 if __name__ == '__main__':
     main() 
