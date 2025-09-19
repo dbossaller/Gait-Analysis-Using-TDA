@@ -8,8 +8,8 @@ from find_walking_frames import find_walking_data
 
 
 def main():
-    make_n_json_datasets(5, leg = 'right', location = 'thigh')
-    make_n_json_datasets(5, leg = 'left', location = 'thigh')
+    make_n_json_datasets(5, leg = 'right', location = 'thigh', sample_size = 150)
+    make_n_json_datasets(5, leg = 'left', location = 'thigh', sample_size = 150)
 
 '''
 function to construct a dataset of walking examples for the 
