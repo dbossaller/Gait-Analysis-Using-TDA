@@ -70,6 +70,9 @@ def construct_dataset(directory = 'data/', leg = 'right', location = 'thigh', nu
             continue
     return full_dataset
 
+'''
+The datasets constructed above are saved in the Datasets folder as .json files, which can easily be loaded back into pandas dataframes.
+'''
 def dataset_to_json(dataset):
     keys = dataset.keys()
     dict_dataset = {}
@@ -106,6 +109,9 @@ def load_data_from_json(filename):
     dataset = read_data_json(filename)
     return samples_to_dataframes(dataset)
 
+'''
+Construct n datasets which can be used in lieu of constructing a new dataset.
+'''
 def make_n_json_datasets(n, save_folder = '/Datasets', directory = './data/', leg = 'right', location = 'thigh', num_periods = 4, sample_size=50):
     for i in range(n):
         filename = f'.{save_folder}/{leg}_{location}_{i}.json'

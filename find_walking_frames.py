@@ -2,6 +2,10 @@ import os
 import re
 
 import pandas as pd
+
+'''
+Script to extract the walking frames from each subject. The full dataset contains accelerometer data for various activities. 
+'''
 def main():
     directory = 'data/'
     test_subject_num = '2'
