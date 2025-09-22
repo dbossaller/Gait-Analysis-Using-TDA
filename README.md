@@ -1,12 +1,17 @@
 # Gait Classifier #
-Experiment with using topological data analysis techniques to construct a predictor for walking data.
+Experiment with using topological data analysis techniques to construct a classifier for walking data taken from an accelerometer strapped to the thigh of a subject. The goal is to explore features of the data which can be used to determine if a device has been stolen and is being carried in the pocket of another person. See [Identifying People from Gait Pattern with Accelerometers](/References/VTT%20Identifying%20People%20by%20Gait.pdf) for more information about this specifice use case.
 
 Used the HuGaDb Dataset from the [HuGaDB repository](https://github.com/romanchereshnev/HuGaDB)
 
-I used the persistence toolkit from the [Giotto-TDA repository](https://github.com/giotto-ai/giotto-tda) and a decision tree classifier to classify subjects based on characteristics in their walk.
+I used the persistence toolkit from the [Giotto-TDA repository](https://github.com/giotto-ai/giotto-tda) and a decision tree classifier to determine if the persistence entropy is sufficient for classifying whether an individual has someone else's phone in their pocket.
 
-### Disclaimer: ### 
+A decision tree classifier implemented in [HGDB_classifcation.ipynb](/HGDB_classification.ipynb) was ~95% accurate in determining if an individual's signal did not match Subject 1's.
 
-I think that there is a possibility that I'm overfitting the data by using a decision tree which is significantly deeper than $\log_2(18) \sim 4.2$. 
+## To do: ##
+- Subject #2 and Subject #14 present challenges with extracting two periods of an example walking gait for the sample datasets compiled in the [Datasets](/Datasets/) folder.
 
-I also used the entropy calculations of the persistence diagram as a variable in the classification; I'm not sure how effective this is.
+- Currently I am only using the z-accelration sensor from the dataset (measuring the ''up and down'' acceleration). In order to make this more robust to phones stored in other orientations (such as upside-down in the pocket), we need to implement some kind of PCA to use the x, y, and z accelerations and extract the principal components. This will then be more robust.
+
+
+
+
