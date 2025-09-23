@@ -8,8 +8,8 @@ from find_walking_frames import find_walking_data
 
 
 def main():
-    make_n_json_datasets(5, leg = 'right', location = 'thigh', sample_size = 150)
-    make_n_json_datasets(5, leg = 'left', location = 'thigh', sample_size = 150)
+    make_n_json_datasets(5, leg = 'right', location = 'thigh', sample_size = 100)
+    make_n_json_datasets(5, leg = 'left', location = 'thigh', sample_size = 100)
 
 '''
 function to construct a dataset of walking examples for the 
@@ -45,7 +45,14 @@ def make_sub_dataset(subject, directory, leg = 'right', location = 'thigh', num_
         _ = df_accel_loc['acc_' + sensor_placed_where + '_z']
         num_rows = _.shape[0]
 
-        period = find_period_acf(_, 150)
+        # Subjects 2 and 14 have walking windows that are less than the number of lags I want to use, and that throws a ValueError. This try/except just asks
+        # the function to try again if it encouters a value error.
+        
+        try:
+            period = find_period_acf(_, 150)
+        
+        except ValueError:
+            continue
 
         num_strides = num_rows//period + 1
 

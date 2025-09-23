@@ -8,8 +8,6 @@ I used the persistence toolkit from the [Giotto-TDA repository](https://github.c
 A decision tree classifier implemented in [HGDB_classifcation.ipynb](/HGDB_classification.ipynb) was ~95% accurate in determining if an individual's signal did not match Subject 1's.
 
 ## To do: ##
-- Subject #2 and Subject #14 present challenges with extracting two periods of an example walking gait for the sample datasets compiled in the [Datasets](/Datasets/) folder.
-
 - Currently I am only using the z-accelration sensor from the dataset (measuring the ''up and down'' acceleration). In order to make this more robust to phones stored in other orientations (such as upside-down in the pocket), we need to implement some kind of PCA to use the x, y, and z accelerations and extract the principal components. This will then be more robust.
 
 
