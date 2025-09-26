@@ -1,22 +1,9 @@
 from gtda.diagrams import PersistenceEntropy, Scaler
-from gtda.homology import WeakAlphaPersistence
-from gtda.metaestimators import CollectionTransformer
+from gtda.homology import VietorisRipsPersistence
 from gtda.pipeline import Pipeline
-from gtda.time_series import TakensEmbedding
-from sklearn.decomposition import PCA
 
 def topological_transform(signals):
-    embedding_dimension = 10
-    embedding_time_delay = 5
-    stride = 1
-
-    embedder = TakensEmbedding(time_delay=embedding_time_delay,
-                            dimension = embedding_dimension,
-                            stride = stride)
-
-    batch_pca = CollectionTransformer(PCA(n_components = 3), n_jobs = -1)
-
-    persistence = WeakAlphaPersistence(homology_dimensions=[0,1], n_jobs = -1)
+    persistence = VietorisRipsPersistence(homology_dimensions=(0,1,2), n_jobs = -1)
 
     scaling = Scaler()
 
@@ -24,14 +11,12 @@ def topological_transform(signals):
 
 
     steps = [
-        ('embedder', embedder),
-        ('pca', batch_pca),
         ('persistence', persistence),
         ('scaling', scaling),
         ('entropy', entropy)]
 
     topological_transformer = Pipeline(steps)
 
-    H0_H1_entropies = topological_transformer.fit_transform(signals)
+    H0_H1_H2_entropies = topological_transformer.fit_transform(signals)
     
-    return H0_H1_entropies
+    return H0_H1_H2_entropies

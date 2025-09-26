@@ -8,8 +8,8 @@ from find_walking_frames import find_walking_data
 
 
 def main():
-    make_n_json_datasets(5, leg = 'right', location = 'thigh', sample_size = 100)
-    make_n_json_datasets(5, leg = 'left', location = 'thigh', sample_size = 100)
+    make_n_json_datasets(5, leg = 'right', location = 'thigh', num_periods = 3, sample_size = 100)
+    make_n_json_datasets(5, leg = 'left', location = 'thigh', num_periods = 3, sample_size = 100)
 
 '''
 function to construct a dataset of walking examples for the 
@@ -109,7 +109,9 @@ def samples_to_dataframes(dataset):
     for key in keys:
         df_dataset[int(key)] = []
         for sample_no in range(len(dataset[key])):
-            df_dataset[int(key)].append(pd.DataFrame(dataset[key][sample_no]))
+            sample_df = pd.DataFrame(pd.DataFrame(dataset[key][sample_no]))
+            sample_df.index = sample_df.index.astype(int)
+            df_dataset[int(key)].append(sample_df)
     return df_dataset
 
 def load_data_from_json(filename):

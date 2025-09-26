@@ -13,6 +13,7 @@ dependencies = [
     "nbformat>=5.10.4",
     "numpy>=1.26.4",
     "pandas>=2.3.1",
+    "ripser>=0.6.12",
     "ruff>=0.12.10",
     "seaborn>=0.13.2",
     "statsmodels>=0.14.5",
