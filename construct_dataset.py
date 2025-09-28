@@ -80,7 +80,7 @@ def construct_dataset(directory = 'data/', leg = 'right', location = 'thigh', nu
 '''
 The datasets constructed above are saved in the Datasets folder as .json files, which can easily be loaded back into pandas dataframes.
 '''
-def dataset_to_json(dataset):
+def dataset_to_dict(dataset):
     keys = dataset.keys()
     dict_dataset = {}
     for key in keys:            
@@ -93,9 +93,9 @@ def dataset_to_json(dataset):
 
 
 def write_data_to_json(filename, data):
-    json_dataset = dataset_to_json(data)
+    dict_dataset = dataset_to_dict(data)
     with open(filename, 'w+') as fp:
-        json.dump(json_dataset, fp, indent=2)
+        json.dump(dict_dataset, fp, indent=2)
 
 def read_data_json(filename):
     data = None
