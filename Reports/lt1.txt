@@ -1,234 +1,234 @@
 Subject 1 Classification Report
               precision    recall  f1-score   support
 
-       False       0.96      0.99      0.98       568
-        True       0.50      0.19      0.28        26
+       False       0.95      1.00      0.97       562
+        True       0.67      0.12      0.21        32
 
-    accuracy                           0.96       594
-   macro avg       0.73      0.59      0.63       594
-weighted avg       0.94      0.96      0.95       594
+    accuracy                           0.95       594
+   macro avg       0.81      0.56      0.59       594
+weighted avg       0.94      0.95      0.93       594
 
-[[563   5]
- [ 21   5]]
+[[560   2]
+ [ 28   4]]
 
 Subject 2 Classification Report
               precision    recall  f1-score   support
 
-       False       0.93      1.00      0.96       551
-        True       1.00      0.07      0.13        43
+       False       0.95      1.00      0.97       563
+        True       1.00      0.03      0.06        31
 
-    accuracy                           0.93       594
-   macro avg       0.97      0.53      0.55       594
-weighted avg       0.94      0.93      0.90       594
+    accuracy                           0.95       594
+   macro avg       0.97      0.52      0.52       594
+weighted avg       0.95      0.95      0.93       594
 
-[[551   0]
- [ 40   3]]
+[[563   0]
+ [ 30   1]]
 
 Subject 3 Classification Report
               precision    recall  f1-score   support
 
-       False       0.97      1.00      0.98       566
-        True       0.86      0.43      0.57        28
+       False       0.97      0.98      0.98       562
+        True       0.61      0.44      0.51        32
 
-    accuracy                           0.97       594
-   macro avg       0.91      0.71      0.78       594
-weighted avg       0.97      0.97      0.96       594
+    accuracy                           0.95       594
+   macro avg       0.79      0.71      0.74       594
+weighted avg       0.95      0.95      0.95       594
 
-[[564   2]
- [ 16  12]]
+[[553   9]
+ [ 18  14]]
 
 Subject 4 Classification Report
               precision    recall  f1-score   support
 
-       False       0.95      1.00      0.97       564
-        True       0.00      0.00      0.00        30
+       False       0.95      1.00      0.97       563
+        True       0.00      0.00      0.00        31
 
-    accuracy                           0.95       594
+    accuracy                           0.94       594
    macro avg       0.47      0.50      0.49       594
-weighted avg       0.90      0.95      0.92       594
+weighted avg       0.90      0.94      0.92       594
 
-[[563   1]
- [ 30   0]]
+[[561   2]
+ [ 31   0]]
 
 Subject 5 Classification Report
               precision    recall  f1-score   support
 
-       False       0.94      1.00      0.97       555
-        True       0.60      0.08      0.14        39
+       False       0.96      0.99      0.98       570
+        True       0.40      0.08      0.14        24
 
-    accuracy                           0.94       594
-   macro avg       0.77      0.54      0.55       594
-weighted avg       0.92      0.94      0.91       594
+    accuracy                           0.96       594
+   macro avg       0.68      0.54      0.56       594
+weighted avg       0.94      0.96      0.94       594
 
-[[553   2]
- [ 36   3]]
+[[567   3]
+ [ 22   2]]
 
 Subject 6 Classification Report
               precision    recall  f1-score   support
 
-       False       0.94      1.00      0.97       560
-        True       0.00      0.00      0.00        34
+       False       0.96      1.00      0.98       569
+        True       0.00      0.00      0.00        25
 
-    accuracy                           0.94       594
-   macro avg       0.47      0.50      0.49       594
-weighted avg       0.89      0.94      0.91       594
+    accuracy                           0.96       594
+   macro avg       0.48      0.50      0.49       594
+weighted avg       0.92      0.96      0.94       594
 
-[[560   0]
- [ 34   0]]
+[[569   0]
+ [ 25   0]]
 
 Subject 7 Classification Report
               precision    recall  f1-score   support
 
-       False       0.96      0.99      0.97       567
-        True       0.20      0.04      0.06        27
+       False       0.94      1.00      0.97       558
+        True       0.50      0.03      0.05        36
 
-    accuracy                           0.95       594
-   macro avg       0.58      0.51      0.52       594
-weighted avg       0.92      0.95      0.93       594
+    accuracy                           0.94       594
+   macro avg       0.72      0.51      0.51       594
+weighted avg       0.91      0.94      0.91       594
 
-[[563   4]
- [ 26   1]]
+[[557   1]
+ [ 35   1]]
 
 Subject 8 Classification Report
               precision    recall  f1-score   support
 
-       False       0.94      1.00      0.97       560
-        True       0.50      0.03      0.06        34
+       False       0.94      1.00      0.97       557
+        True       0.50      0.05      0.10        37
 
     accuracy                           0.94       594
-   macro avg       0.72      0.51      0.51       594
-weighted avg       0.92      0.94      0.92       594
+   macro avg       0.72      0.53      0.53       594
+weighted avg       0.91      0.94      0.91       594
 
-[[559   1]
- [ 33   1]]
+[[555   2]
+ [ 35   2]]
 
 Subject 9 Classification Report
               precision    recall  f1-score   support
 
-       False       0.94      1.00      0.97       555
-        True       1.00      0.05      0.10        39
+       False       0.94      0.99      0.97       558
+        True       0.33      0.06      0.10        36
 
     accuracy                           0.94       594
-   macro avg       0.97      0.53      0.53       594
-weighted avg       0.94      0.94      0.91       594
+   macro avg       0.64      0.52      0.53       594
+weighted avg       0.91      0.94      0.91       594
 
-[[555   0]
- [ 37   2]]
+[[554   4]
+ [ 34   2]]
 
 Subject 10 Classification Report
               precision    recall  f1-score   support
 
-       False       0.96      1.00      0.98       570
-        True       1.00      0.12      0.22        24
+       False       0.93      1.00      0.97       549
+        True       1.00      0.13      0.24        45
 
-    accuracy                           0.96       594
-   macro avg       0.98      0.56      0.60       594
-weighted avg       0.97      0.96      0.95       594
+    accuracy                           0.93       594
+   macro avg       0.97      0.57      0.60       594
+weighted avg       0.94      0.93      0.91       594
 
-[[570   0]
- [ 21   3]]
+[[549   0]
+ [ 39   6]]
 
 Subject 11 Classification Report
               precision    recall  f1-score   support
 
-       False       0.94      1.00      0.97       558
-        True       1.00      0.08      0.15        36
+       False       0.95      1.00      0.98       565
+        True       0.67      0.07      0.12        29
+
+    accuracy                           0.95       594
+   macro avg       0.81      0.53      0.55       594
+weighted avg       0.94      0.95      0.93       594
+
+[[564   1]
+ [ 27   2]]
+
+Subject 12 Classification Report
+              precision    recall  f1-score   support
+
+       False       0.95      0.98      0.96       559
+        True       0.35      0.17      0.23        35
+
+    accuracy                           0.93       594
+   macro avg       0.65      0.58      0.60       594
+weighted avg       0.91      0.93      0.92       594
+
+[[548  11]
+ [ 29   6]]
+
+Subject 13 Classification Report
+              precision    recall  f1-score   support
+
+       False       0.94      0.99      0.96       551
+        True       0.67      0.14      0.23        43
+
+    accuracy                           0.93       594
+   macro avg       0.80      0.57      0.60       594
+weighted avg       0.92      0.93      0.91       594
+
+[[548   3]
+ [ 37   6]]
+
+Subject 14 Classification Report
+              precision    recall  f1-score   support
+
+       False       0.96      0.99      0.98       567
+        True       0.50      0.15      0.23        27
+
+    accuracy                           0.95       594
+   macro avg       0.73      0.57      0.60       594
+weighted avg       0.94      0.95      0.94       594
+
+[[563   4]
+ [ 23   4]]
+
+Subject 15 Classification Report
+              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.97       558
+        True       0.86      0.17      0.28        36
+
+    accuracy                           0.95       594
+   macro avg       0.90      0.58      0.63       594
+weighted avg       0.94      0.95      0.93       594
+
+[[557   1]
+ [ 30   6]]
+
+Subject 16 Classification Report
+              precision    recall  f1-score   support
+
+       False       0.94      1.00      0.97       557
+        True       1.00      0.08      0.15        37
 
     accuracy                           0.94       594
    macro avg       0.97      0.54      0.56       594
 weighted avg       0.95      0.94      0.92       594
 
-[[558   0]
- [ 33   3]]
-
-Subject 12 Classification Report
-              precision    recall  f1-score   support
-
-       False       0.94      1.00      0.97       557
-        True       0.00      0.00      0.00        37
-
-    accuracy                           0.94       594
-   macro avg       0.47      0.50      0.48       594
-weighted avg       0.88      0.94      0.91       594
-
-[[556   1]
- [ 37   0]]
-
-Subject 13 Classification Report
-              precision    recall  f1-score   support
-
-       False       0.95      1.00      0.97       560
-        True       0.75      0.18      0.29        34
-
-    accuracy                           0.95       594
-   macro avg       0.85      0.59      0.63       594
-weighted avg       0.94      0.95      0.93       594
-
-[[558   2]
- [ 28   6]]
-
-Subject 14 Classification Report
-              precision    recall  f1-score   support
-
-       False       0.94      1.00      0.97       555
-        True       0.50      0.05      0.09        39
-
-    accuracy                           0.93       594
-   macro avg       0.72      0.52      0.53       594
-weighted avg       0.91      0.93      0.91       594
-
-[[553   2]
- [ 37   2]]
-
-Subject 15 Classification Report
-              precision    recall  f1-score   support
-
-       False       0.95      1.00      0.98       566
-        True       1.00      0.04      0.07        28
-
-    accuracy                           0.95       594
-   macro avg       0.98      0.52      0.52       594
-weighted avg       0.96      0.95      0.93       594
-
-[[566   0]
- [ 27   1]]
-
-Subject 16 Classification Report
-              precision    recall  f1-score   support
-
-       False       0.94      1.00      0.97       556
-        True       0.00      0.00      0.00        38
-
-    accuracy                           0.94       594
-   macro avg       0.47      0.50      0.48       594
-weighted avg       0.88      0.94      0.91       594
-
-[[556   0]
- [ 38   0]]
+[[557   0]
+ [ 34   3]]
 
 Subject 17 Classification Report
               precision    recall  f1-score   support
 
-       False       0.95      1.00      0.97       564
-        True       0.50      0.07      0.12        30
+       False       0.95      0.99      0.97       563
+        True       0.38      0.10      0.15        31
 
-    accuracy                           0.95       594
-   macro avg       0.73      0.53      0.55       594
-weighted avg       0.93      0.95      0.93       594
+    accuracy                           0.94       594
+   macro avg       0.66      0.54      0.56       594
+weighted avg       0.92      0.94      0.93       594
 
-[[562   2]
- [ 28   2]]
+[[558   5]
+ [ 28   3]]
 
 Subject 18 Classification Report
               precision    recall  f1-score   support
 
-       False       0.96      0.99      0.98       557
-        True       0.78      0.38      0.51        37
+       False       0.95      1.00      0.98       554
+        True       1.00      0.33      0.49        40
 
     accuracy                           0.95       594
-   macro avg       0.87      0.69      0.74       594
-weighted avg       0.95      0.95      0.95       594
+   macro avg       0.98      0.66      0.73       594
+weighted avg       0.96      0.95      0.94       594
 
-[[553   4]
- [ 23  14]]
+[[554   0]
+ [ 27  13]]
 
